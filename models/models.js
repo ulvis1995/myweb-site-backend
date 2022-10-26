@@ -90,5 +90,5 @@ TypeProject.hasOne(Work, { foreignKey: 'type_project_id' });
 Contacts.belongsTo(TypeContacts, { foreignKey: 'type_contacts_id' });
 TypeContacts.hasOne(Contacts, { foreignKey: 'type_contacts_id' });
 
-About.belongsTo(TypeAbout, { foreignKey: 'type_about_id' });
+About.belongsTo(TypeAbout, { foreignKey: 'type_about_id' , as: 'type'});
 TypeAbout.hasOne(About, { foreignKey: 'type_about_id' });
