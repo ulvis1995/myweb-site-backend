@@ -4,11 +4,11 @@ import { contactsRouter } from "./contactsRouter.js";
 import { newsRouter } from "./newsRouter.js";
 import { typeRouter } from "./typeRouter.js";
 import { workRouter } from "./workRouter.js";
-// import { userRouter } from "./userRouter.js";
+import { userRouter } from "./userRouter.js";
 
 export const router = new Router();
 
-// router.use('/user', userRouter);
+router.use('/user', userRouter);
 router.use('/news', newsRouter);
 router.use('/contacts', contactsRouter);
 router.use('/about', aboutRouter);

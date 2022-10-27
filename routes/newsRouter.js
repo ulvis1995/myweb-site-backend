@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { newsController } from "../controllers/newsController.js";
+import { checkRoleMiddleware } from "../middleware/checkRoleMiddleware.js";
 
 export const newsRouter = new Router();
 
-newsRouter.post('/', newsController.create);
+newsRouter.post('/', checkRoleMiddleware('ADMIN'), newsController.create);
 newsRouter.get('/', newsController.getAll);
 newsRouter.get('/:id', newsController.getOne);
-newsRouter.delete('/', newsController.remove);
-newsRouter.patch('/:id', newsController.update);
+newsRouter.delete('/', checkRoleMiddleware('ADMIN'), newsController.remove);
+newsRouter.patch('/:id', checkRoleMiddleware('ADMIN'), newsController.update);
