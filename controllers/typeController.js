@@ -2,15 +2,23 @@ import { ApiError } from '../error/ApiError.js';
 import { TypeAbout, TypeContacts, TypeProject } from '../models/models.js';
 
 class TypeController {
-  async createAboutType(req, res) {
-    const { title } = req.body;
-    const type = await TypeAbout.create({ title });
-    return res.json(type);
+  async createAboutType(req, res, next) {
+    try {
+      const { title } = req.body;
+      const type = await TypeAbout.create({ title });
+      return res.json(type);
+    } catch (e) {
+      next(ApiError.badRequest('Не удалось создать тип'));
+    }
   }
 
-  async getAllAboutType(req, res) {
-    const types = await TypeAbout.findAll();
-    return res.json(types);
+  async getAllAboutType(req, res, next) {
+    try {
+      const types = await TypeAbout.findAll();
+      return res.json(types);
+    } catch (e) {
+      next(ApiError.badRequest('Не найти типы'));
+    }
   }
 
   async updateAboutType(req, res, next) {
@@ -20,19 +28,27 @@ class TypeController {
 
       return res.json({ success: true });
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(ApiError.badRequest('Не удалось обновить информацию'));
     }
   }
 
-  async createProjectType(req, res) {
-    const { title, description } = req.body;
-    const type = await TypeProject.create({ title, description });
-    return res.json(type);
+  async createProjectType(req, res, next) {
+    try {
+      const { title, description } = req.body;
+      const type = await TypeProject.create({ title, description });
+      return res.json(type);
+    } catch (e) {
+      next(ApiError.badRequest('Не удалось создать тип'));
+    }
   }
 
-  async getAllProjectType(req, res) {
-    const types = await TypeProject.findAll();
-    return res.json(types);
+  async getAllProjectType(req, res, next) {
+    try {
+      const types = await TypeProject.findAll();
+      return res.json(types);
+    } catch (e) {
+      next(ApiError.badRequest('Не найти типы'));
+    }
   }
 
   async updateProjectType(req, res, next) {
@@ -48,19 +64,27 @@ class TypeController {
 
       return res.json({ success: true });
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(ApiError.badRequest('Не удалось обновить информацию'));
     }
   }
 
-  async createContactsType(req, res) {
-    const { header } = req.body;
-    const type = await TypeContacts.create({ header });
-    return res.json(type);
+  async createContactsType(req, res, next) {
+    try {
+      const { header } = req.body;
+      const type = await TypeContacts.create({ header });
+      return res.json(type);
+    } catch (e) {
+      next(ApiError.badRequest('Не удалось создать тип'));
+    }
   }
 
-  async getAllContactsType(req, res) {
-    const types = await TypeContacts.findAll();
-    return res.json(types);
+  async getAllContactsType(req, res, next) {
+    try {
+      const types = await TypeContacts.findAll();
+      return res.json(types);
+    } catch (e) {
+      next(ApiError.badRequest('Не найти типы'));
+    }
   }
 
   async updateContactsType(req, res, next) {
@@ -75,7 +99,7 @@ class TypeController {
 
       return res.json({ success: true });
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(ApiError.badRequest('Не удалось обновить информацию'));
     }
   }
 }
