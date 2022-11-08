@@ -84,7 +84,7 @@ export const About = sequelize.define('about_list', {
 });
 
 
-Work.belongsTo(TypeProject, { foreignKey: 'type_project_id' });
+Work.belongsTo(TypeProject, { foreignKey: 'type_project_id', as: 'type' });
 TypeProject.hasOne(Work, { foreignKey: 'type_project_id' });
 
 Contacts.belongsTo(TypeContacts, { foreignKey: 'type_contacts_id' });
