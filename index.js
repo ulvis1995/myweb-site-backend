@@ -23,6 +23,10 @@ app.use('/api', router);
 // Обработка ошибок, последний Middleware
 app.use(errorHandler);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./build/index.html"));
+});
+
 const start = async () => {
   try {
     await sequelize.authenticate();
