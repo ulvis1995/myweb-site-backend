@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize";
+import {} from 'dotenv/config';
 
 export const sequelize = new Sequelize(
   process.env.DB_NAME, // НАЗВАНИЕ БД
@@ -8,6 +9,6 @@ export const sequelize = new Sequelize(
     dialect: 'postgres',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    schema: process.env.DB_SCHEME
+    schema: process.env.DB_SCHEMA
   }
 );

@@ -1,5 +1,6 @@
 import {sequelize} from '../db.js';
 import { DataTypes} from 'sequelize';
+import {} from 'dotenv/config';
 
 export const TypeContacts = sequelize.define('type_contacts', {
   id: {type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true},
