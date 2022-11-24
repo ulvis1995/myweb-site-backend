@@ -12,10 +12,10 @@ RUN npm install --silent
 
 COPY . .
 
-ENV PORT 5000
+ENV PORT 5001
 
 EXPOSE $PORT
 
 VOLUME [ "/app/data" ]
 
-CMD ["node", "index.js"] 
+CMD ["sh", "-c", "npm run start"] 
