@@ -2,7 +2,7 @@
 
  services:
   app: 
-    image: node:16-alpine
+    image: violettaparamonova/node:16-alpine
     working_dir: /app
     volumes:
       - ./:/app
@@ -20,7 +20,7 @@
     command: npm run start
 
   db:
-    image: postgres:14-alpine
+    image: violettaparamonova/postgres:14-alpine
     user: ${DB_USER}
     volumes:
       - app-data:/var/lib/postgresql/data
@@ -38,7 +38,7 @@
       - app
       - db
       - pgadmin
-    image: nginx:latest
+    image: violettaparamonova/nginx:latest
     ports:
       - '80:80'
     volumes:
@@ -50,7 +50,7 @@
     container_name: pgadmin
     depends_on:
       - db
-    image: dpage/pgadmin4
+    image: violettaparamonova/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: viopar@mail.ru
       PGADMIN_DEFAULT_PASSWORD: 30031995Aa
