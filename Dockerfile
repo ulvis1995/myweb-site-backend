@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY /*.json /app
 
-RUN npm install --silent
+RUN npm install
 
 COPY . .
 
